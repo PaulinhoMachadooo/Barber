@@ -1,0 +1,31 @@
+import { Card, CardContent } from "@/app/_components/ui/card";
+import { BarberShop} from "@prisma/client";
+import Image from "next/image";
+import { Button } from "@/app/_components/ui/button";
+
+interface BarbershopItemProps {
+    barbershop: BarberShop;
+}
+
+const BarbershopItem = ({ barbershop } : BarbershopItemProps) => {
+    return ( 
+        <Card className="min-w-[167px] maz-w-[167px] rounded-2xl">
+            <CardContent className="p-1">
+                <Image 
+                    alt={barbershop.name} 
+                    src={barbershop.imageUrl}
+                    height={0}
+                    width={0}
+                    sizes="100vw"
+                    className="h-[159px] w-full rounded-2xl"
+                />
+
+                <h2 className="font-bold">{barbershop.name}</h2>
+                <p className="text-sm text-gray-400 overflow-hidden text-ellipsis text-nowrap">{barbershop.address}</p>
+                <Button variant={"secondary"}>Reservar</Button>
+            </CardContent>
+        </Card>
+     );
+};
+ 
+export default BarbershopItem;
